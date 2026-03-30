@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VNHS | Vancouver Neurotherapy Health Services — Neurofeedback Clinic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0891b2',
+            'primary-dark': '#064e5c',
+            accent: '#f59e0b',
+            'accent-hover': '#d97706',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #064e5c 0%, #0891b2 40%, #06b6d4 70%, #67e8f9 100%);
+    }
+    .hero-wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .hero-wave svg {
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 80px;
+    }
+    .condition-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+    .timeline-line {
+      position: absolute;
+      left: 20px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #0891b2, #06b6d4);
+    }
+    .testimonial-slide {
+      transition: opacity 0.5s ease-in-out;
+    }
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+    .brain-decoration {
+      animation: pulse-subtle 4s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 lg:h-20">
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 shrink-0">
+          <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+            <span class="text-white font-bold text-lg">V</span>
+          </div>
+          <div class="hidden sm:block">
+            <span class="block text-lg font-bold text-primary-dark leading-tight">VNHS</span>
+            <span class="block text-xs text-slate-500 leading-tight">Vancouver Neurotherapy Health Services</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="#about" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">About</a>
+          <a href="#services" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Services</a>
+          <a href="#testimonials" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Testimonials</a>
+          <a href="#faq" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">FAQ</a>
+          <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">Contact</a>
+        </div>
+
+        <!-- Desktop CTA + Phone -->
+        <div class="hidden lg:flex items-center gap-6">
+          <a href="tel:6047309600" class="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+            <span class="inline-block mr-1">
+              <svg class="w-4 h-4 inline-block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </span>
+            (604) 730-9600
+          </a>
+          <a href="#contact" class="inline-flex items-center px-5 py-2.5 bg-accent hover:bg-accent-hover text-white text-sm font-semibold rounded-lg transition-colors shadow-sm">
+            Book a Consultation
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 -mr-2 text-slate-600 hover:text-primary" aria-label="Open menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path id="menu-icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+            <path id="menu-icon-close" class="hidden" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="lg:hidden fixed inset-0 top-16 z-40 pointer-events-none">
+      <div id="mobile-overlay" class="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-300"></div>
+      <div id="mobile-panel" class="absolute top-0 right-0 w-72 h-full bg-white shadow-xl translate-x-full transition-transform duration-300 ease-in-out overflow-y-auto">
+        <div class="p-6 flex flex-col gap-2">
+          <a href="#about" class="mobile-nav-link block py-3 px-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">About</a>
+          <a href="#services" class="mobile-nav-link block py-3 px-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Services</a>
+          <a href="#testimonials" class="mobile-nav-link block py-3 px-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Testimonials</a>
+          <a href="#faq" class="mobile-nav-link block py-3 px-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">FAQ</a>
+          <a href="#contact" class="mobile-nav-link block py-3 px-4 text-base font-medium text-slate-700 hover:bg-slate-50 rounded-lg">Contact</a>
+          <hr class="my-3 border-slate-200">
+          <a href="tel:6047309600" class="block py-3 px-4 text-base font-medium text-slate-600">
+            <svg class="w-4 h-4 inline-block mr-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            (604) 730-9600
+          </a>
+          <a href="#contact" class="mobile-nav-link block mt-2 py-3 px-4 bg-accent hover:bg-accent-hover text-white text-center font-semibold rounded-lg">
+            Book a Consultation
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========== HERO ========== -->
+    <section class="hero-gradient relative pt-28 pb-32 sm:pt-36 sm:pb-40 lg:pt-44 lg:pb-48 overflow-hidden">
+      <!-- Decorative circles -->
+      <div class="absolute top-20 right-10 w-64 h-64 rounded-full bg-white/5 brain-decoration"></div>
+      <div class="absolute bottom-20 left-10 w-48 h-48 rounded-full bg-white/5 brain-decoration" style="animation-delay: 2s;"></div>
+      <div class="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-white/5 brain-decoration" style="animation-delay: 1s;"></div>
+      <!-- Brain wave SVG decoration -->
+      <div class="absolute top-1/2 left-0 right-0 opacity-10 pointer-events-none">
+        <svg viewBox="0 0 1200 120" fill="none" class="w-full">
+          <path d="M0 60 Q50 20 100 60 T200 60 T300 60 T400 60 T500 60 T600 60 T700 60 T800 60 T900 60 T1000 60 T1100 60 T1200 60" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M0 60 Q50 90 100 60 T200 60 T300 60 T400 60 T500 60 T600 60 T700 60 T800 60 T900 60 T1000 60 T1100 60 T1200 60" stroke="white" stroke-width="1.5" fill="none" transform="translate(0, 15)"/>
+        </svg>
+      </div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight tracking-tight">
+            Achieve Your Full Potential Through Brain-Based Self-Regulation
+          </h1>
+          <p class="mt-6 text-lg sm:text-xl text-cyan-100 leading-relaxed max-w-2xl">
+            Vancouver's trusted neurofeedback clinic since 1996. Drug-free, non-invasive therapy for ADHD, anxiety, depression, brain injuries, and more.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#contact" class="inline-flex items-center justify-center px-7 py-3.5 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors shadow-lg shadow-amber-500/25 text-base">
+              Book a Consultation
+            </a>
+            <a href="#about" class="inline-flex items-center justify-center px-7 py-3.5 border-2 border-white/40 hover:border-white/70 text-white font-semibold rounded-lg transition-colors text-base">
+              Learn How It Works
+            </a>
+          </div>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <span class="block text-xl font-bold text-white">90-95%</span>
+              <span class="block text-sm text-cyan-200">Success Rate</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <div>
+              <span class="block text-xl font-bold text-white">30+</span>
+              <span class="block text-sm text-cyan-200">Years Experience</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </div>
+            <div>
+              <span class="block text-xl font-bold text-white">Drug-Free</span>
+              <span class="block text-sm text-cyan-200">Therapy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wave divider -->
+      <div class="hero-wave">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,141.14,321.39,56.44Z" fill="#ffffff"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ========== CONDITIONS WE TREAT ========== -->
+    <section id="conditions" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Conditions We Treat</h2>
+          <p class="mt-4 text-lg text-slate-500">Evidence-based neurofeedback therapy for a wide range of neurological and psychological conditions</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- ADHD -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">ADHD & Attention Disorders</h3>
+            <p class="text-sm text-slate-500">Improve focus, reduce impulsivity, and enhance executive function.</p>
+          </div>
+          <!-- Anxiety -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Anxiety & Stress</h3>
+            <p class="text-sm text-slate-500">Calm an overactive nervous system and restore emotional balance.</p>
+          </div>
+          <!-- Depression -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Depression</h3>
+            <p class="text-sm text-slate-500">Rebalance mood-regulating brainwave patterns naturally.</p>
+          </div>
+          <!-- PTSD -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">PTSD & Trauma</h3>
+            <p class="text-sm text-slate-500">Help the brain process trauma and reduce hyperarousal responses.</p>
+          </div>
+          <!-- Brain Injuries -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Brain Injuries</h3>
+            <p class="text-sm text-slate-500">Support recovery from concussions, TBI, and stroke-related damage.</p>
+          </div>
+          <!-- Autism -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Autism / Aspergers</h3>
+            <p class="text-sm text-slate-500">Enhance social engagement, reduce sensory overload, and improve communication.</p>
+          </div>
+          <!-- Chronic Pain -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Chronic Pain & Migraines</h3>
+            <p class="text-sm text-slate-500">Retrain pain pathways and reduce migraine frequency and severity.</p>
+          </div>
+          <!-- Learning Disabilities -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Learning Disabilities</h3>
+            <p class="text-sm text-slate-500">Address dyslexia, processing difficulties, and academic challenges.</p>
+          </div>
+          <!-- Epilepsy -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1-5.1m0 0L11.42 4.97m-5.1 5.1H21M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Epilepsy</h3>
+            <p class="text-sm text-slate-500">Reduce seizure frequency through targeted brainwave training.</p>
+          </div>
+          <!-- Peak Performance -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 01-2.77.672 6.023 6.023 0 01-2.77-.672"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Peak Performance</h3>
+            <p class="text-sm text-slate-500">Optimize focus, creativity, and mental clarity for athletes and professionals.</p>
+          </div>
+          <!-- Sleep -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Sleep Disorders</h3>
+            <p class="text-sm text-slate-500">Regulate sleep patterns and improve overall sleep quality.</p>
+          </div>
+          <!-- Addiction -->
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+            <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
+              <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
+            </div>
+            <h3 class="font-semibold text-slate-800 mb-1">Addiction Recovery</h3>
+            <p class="text-sm text-slate-500">Support recovery by stabilizing brain chemistry and reducing cravings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ABOUT / HOW IT WORKS ========== -->
+    <section id="about" class="py-20 lg:py-28 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <!-- Left: Text -->
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-6">What is Neurofeedback?</h2>
+            <p class="text-lg text-slate-600 leading-relaxed mb-8">
+              Neurofeedback is a form of biofeedback that uses real-time monitoring of brain activity to teach self-regulation. Using EEG sensors placed on the scalp, we measure your brainwave patterns and provide feedback through visual and auditory cues, helping your brain learn to function more efficiently.
+            </p>
+            <h3 class="text-2xl font-bold text-slate-800 mb-6">How Does It Work?</h3>
+            <p class="text-slate-600 mb-8">
+              Our process is simple, structured, and tailored to your specific needs. Here's what to expect:
+            </p>
+          </div>
+
+          <!-- Right: Process Timeline -->
+          <div class="relative pl-14">
+            <div class="timeline-line"></div>
+            <!-- Step 1 -->
+            <div class="relative mb-12">
+              <div class="absolute left-[-36px] w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-cyan-500/25">1</div>
+              <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-semibold text-slate-800 mb-2">Assessment</h3>
+                <p class="text-slate-600 text-sm">We review your history, symptoms, and run baseline measurements to understand your unique brain patterns.</p>
+              </div>
+            </div>
+            <!-- Step 2 -->
+            <div class="relative mb-12">
+              <div class="absolute left-[-36px] w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-cyan-500/25">2</div>
+              <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-semibold text-slate-800 mb-2">Training</h3>
+                <p class="text-slate-600 text-sm">Non-invasive EEG sessions, typically 40-60 minutes, 1-3 times per week. You'll sit comfortably while your brain learns new patterns.</p>
+              </div>
+            </div>
+            <!-- Step 3 -->
+            <div class="relative mb-12">
+              <div class="absolute left-[-36px] w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-cyan-500/25">3</div>
+              <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-semibold text-slate-800 mb-2">Progress</h3>
+                <p class="text-slate-600 text-sm">Most clients notice improvements within 5-10 sessions. We track your progress with regular assessments.</p>
+              </div>
+            </div>
+            <!-- Step 4 -->
+            <div class="relative">
+              <div class="absolute left-[-36px] w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-amber-500/25">4</div>
+              <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-100">
+                <h3 class="font-semibold text-slate-800 mb-2">Results</h3>
+                <p class="text-slate-600 text-sm">Lasting changes typically achieved in 40-80 sessions. The improvements are durable because your brain has learned new, healthier patterns.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section id="services" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Our Services</h2>
+          <p class="mt-4 text-lg text-slate-500">A comprehensive range of therapies to support your brain health and overall well-being</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-3">
+          <!-- Service 1 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">EEG Neurofeedback & Biofeedback</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Our core service. Using state-of-the-art EEG monitoring equipment, we train your brain to self-regulate by providing real-time feedback on your brainwave activity. Sessions are comfortable, non-invasive, and tailored to your specific needs. Effective for ADHD, anxiety, depression, PTSD, brain injuries, epilepsy, and peak performance optimization.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 2 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Brain Gym Educational Kinesiology</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Movement-based brain integration exercises that enhance learning, focus, and coordination. Brain Gym uses simple physical activities to stimulate brain function, improve communication between the brain's hemispheres, and support academic and cognitive performance in both children and adults.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 3 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Massage, Shiatsu & Reflexology</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Therapeutic bodywork to release tension, improve circulation, and support the body's natural healing processes. Our practitioners are trained in multiple modalities including Swedish massage, deep tissue, shiatsu (Japanese acupressure), and reflexology (targeted pressure points on feet and hands).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 4 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Acupuncture</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Traditional Chinese medicine technique that stimulates specific points on the body to promote natural healing, reduce pain, and improve overall function. Acupuncture can complement neurofeedback therapy by addressing physical symptoms, reducing stress, and supporting the body's energy balance.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 5 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Counselling & CBT</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Cognitive Behavioural Therapy (CBT) and counselling services to address thought patterns, emotional responses, and behavioural challenges. Our therapists work with you to develop practical coping strategies, build resilience, and create lasting positive change in your daily life.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 6 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Hypnotherapy</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Guided deep relaxation techniques that access the subconscious mind to promote positive change. Hypnotherapy can help with anxiety, phobias, pain management, habit change, and stress reduction. Sessions are conducted in a safe, comfortable environment by our certified practitioner.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 7 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Naturopathy</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Holistic health approaches that work with the body's natural healing systems. Our naturopathic services include nutritional counselling, herbal medicine, and lifestyle recommendations to support your overall health and complement your neurofeedback training.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service 8 -->
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+            <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                  <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+                </div>
+                <span class="font-semibold text-slate-800">Orton-Gillingham Tutoring</span>
+              </div>
+              <svg class="service-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="service-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <div class="pl-14">
+                <p class="text-slate-600 text-sm leading-relaxed">Specialized reading and writing support for individuals with dyslexia and other language-based learning difficulties. The Orton-Gillingham approach is a structured, multisensory method that uses sight, hearing, touch, and movement to help students connect language with letters and words. Particularly effective when combined with neurofeedback training.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section id="team" class="py-20 lg:py-28 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Our Team</h2>
+          <p class="mt-4 text-lg text-slate-500">Experienced practitioners dedicated to your brain health and well-being</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Teresa -->
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">TB</span>
+            </div>
+            <h3 class="font-semibold text-slate-800 text-lg">Teresa de la Boursodi&egrave;re</h3>
+            <p class="text-primary text-sm font-medium mt-1">Clinical Director & Neurotherapist</p>
+            <p class="text-slate-500 text-sm mt-3">BSc Neuroscience, MBA. Founder and lead practitioner with over 30 years of experience in neurofeedback therapy.</p>
+          </div>
+
+          <!-- Sarah -->
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">SM</span>
+            </div>
+            <h3 class="font-semibold text-slate-800 text-lg">Sarah McGuire</h3>
+            <p class="text-primary text-sm font-medium mt-1">Acupuncturist</p>
+            <p class="text-slate-500 text-sm mt-3">BComm. Certified acupuncturist specializing in Traditional Chinese Medicine and holistic wellness treatments.</p>
+          </div>
+
+          <!-- Aldus -->
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">AC</span>
+            </div>
+            <h3 class="font-semibold text-slate-800 text-lg">Aldus Chipman</h3>
+            <p class="text-primary text-sm font-medium mt-1">Hypnotherapist & Biofeedback Technologist</p>
+            <p class="text-slate-500 text-sm mt-3">Certified hypnotherapist and biofeedback specialist helping clients with deep relaxation and behavioural change.</p>
+          </div>
+
+          <!-- Tanja -->
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
+              <span class="text-2xl font-bold text-white">TD</span>
+            </div>
+            <h3 class="font-semibold text-slate-800 text-lg">Tanja Demajo</h3>
+            <p class="text-primary text-sm font-medium mt-1">Biofeedback Technologist & Counsellor</p>
+            <p class="text-slate-500 text-sm mt-3">MD (Serbia). Combines medical expertise with biofeedback technology and counselling for comprehensive patient care.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section id="testimonials" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Patient Stories</h2>
+          <p class="mt-4 text-lg text-slate-500">Real experiences from our clients and their families</p>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto">
+          <!-- Testimonial Container -->
+          <div id="testimonial-container" class="relative overflow-hidden min-h-[280px] sm:min-h-[240px]">
+            <!-- Slide 1 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="0">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-4">"I liked biofeedback because it is easy to do school work now and I can pay attention in class better. It helped me with sports because I can concentrate better and make decisions faster."</blockquote>
+                <p class="text-sm text-slate-500 italic mb-2">His mother: "A lot of people including teachers noticed how much he has improved."</p>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">JH</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">Jack H., 14</span>
+                    <span class="block text-xs text-slate-500">ADHD & Attention</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="1">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-6">"I have been able to withdraw completely from my anti-depressant medication... I feel that biofeedback is the absolute best way to treat conditions normally treated with medications."</blockquote>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">LO</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">L.O., 40</span>
+                    <span class="block text-xs text-slate-500">Depression — Surrey, BC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="2">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-6">"Teresa's skills, knowledge and state-of-the-art equipment retrained my brain, allowing me to stay alert but relaxed for longer periods. The results left me with an enhanced enjoyment of life."</blockquote>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">AS</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">Anna S., 44</span>
+                    <span class="block text-xs text-slate-500">Brain Performance — Kamloops, BC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="3">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-6">"If I had to do this over again would I? Yes... If I knew about this sooner I would have done it sooner so his school experiences would have been better."</blockquote>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">KW</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">Kelly W.S.</span>
+                    <span class="block text-xs text-slate-500">Mother — Port Coquitlam, BC</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 5 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="4">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-6">"One year later our son is behaving almost like any other normal child... I feel neurofeedback therapy has helped our son the most in reducing his hyperactivity and impulsivity."</blockquote>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">LC</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">Lin C.</span>
+                    <span class="block text-xs text-slate-500">Mother of Kevin, 7.5 — Vancouver</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 6 -->
+            <div class="testimonial-slide absolute inset-0 opacity-0" data-index="5">
+              <div class="bg-slate-50 rounded-2xl p-8 sm:p-10 border border-slate-100">
+                <svg class="w-10 h-10 text-primary/20 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10H14.017zM0 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151C7.546 6.068 5.983 8.789 5.983 11h4v10H0z"/></svg>
+                <blockquote class="text-lg text-slate-700 leading-relaxed mb-6">"My grades started to increase as I was able to absorb more material in class. My focusing abilities have increased, I find I am a better listener and do not daydream as much."</blockquote>
+                <div class="flex items-center gap-3 mt-6">
+                  <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span class="text-sm font-semibold text-primary">R</span>
+                  </div>
+                  <div>
+                    <span class="block text-sm font-semibold text-slate-800">Rob, 18</span>
+                    <span class="block text-xs text-slate-500">ADHD & Focus</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex items-center justify-center gap-4 mt-8">
+            <button id="testimonial-prev" class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label="Previous testimonial">
+              <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <div id="testimonial-dots" class="flex gap-2">
+            </div>
+            <button id="testimonial-next" class="w-10 h-10 rounded-full border border-slate-300 flex items-center justify-center hover:bg-slate-50 transition-colors" aria-label="Next testimonial">
+              <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq" class="py-20 lg:py-28 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Frequently Asked Questions</h2>
+          <p class="mt-4 text-lg text-slate-500">Answers to common questions about neurofeedback therapy</p>
+        </div>
+
+        <div class="max-w-3xl mx-auto space-y-3">
+          <!-- FAQ 1 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">What is the history of EEG Biofeedback?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">EEG biofeedback was developed in the 1960s when researchers discovered that individuals could learn to alter their brainwave patterns through feedback. The field expanded significantly through military research and clinical studies. Over 50+ years of research has proven it effective for epilepsy, ADHD, addictions, anxiety, depression, PTSD, and many other conditions. Today it is used by clinics worldwide as a safe, evidence-based treatment approach.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">Could results be due to a placebo effect?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">No. The effects of neurofeedback are specific to electrode placement and frequency trained, meaning different training protocols produce different outcomes. Results are cumulative over sessions, exceed spontaneous recovery ranges, and can be reversed through different training protocols. None of these characteristics are consistent with a placebo effect. Research consistently demonstrates measurable changes in brain function following neurofeedback training.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">What is the minimum age for treatment?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">We have worked with clients from age 5 to 70+. Many clinics around the world successfully work with children as young as 2-3 years old. Neurofeedback is non-invasive and gentle, making it suitable for a wide age range. The training approach is adapted to be age-appropriate and engaging for younger clients.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">How long does training take?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">Changes typically begin to appear after 5-10 sessions. Most clients achieve lasting results in 40-80 sessions, with each session lasting 40-60 minutes, scheduled 1-3 times per week. The exact timeline depends on the condition being addressed, its severity, and individual response to training. We monitor progress throughout and adjust the treatment plan accordingly.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">What's the difference between neurofeedback and biofeedback?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">Biofeedback is the broader term referring to techniques that provide real-time feedback on physiological processes such as heart rate, muscle tension, skin temperature, and breathing. Neurofeedback is a specialized form of biofeedback that focuses specifically on brain function, using EEG monitoring to measure and train brainwave patterns. At our clinic, we use both approaches depending on your specific needs.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">Can I reduce my medications?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">Many clients have been able to work with their physicians to reduce or eliminate medication as neurofeedback training takes effect. However, you should always consult your physician before making any changes to your medication. We are happy to communicate with your doctor about your progress to support informed decisions about your treatment plan.</p>
+            </div>
+          </div>
+
+          <!-- FAQ 7 -->
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+            <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
+              <span class="font-semibold text-slate-800 pr-4">Is this covered by insurance?</span>
+              <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <div class="faq-content hidden px-5 sm:px-6 pb-5 sm:pb-6">
+              <p class="text-slate-600 text-sm leading-relaxed">Coverage varies by plan. Many extended health plans cover biofeedback under medical diagnostics or allied health services. Some plans may also cover associated services like counselling, acupuncture, or massage therapy. We recommend checking with your insurance provider, and we'll be happy to review your coverage during your intake appointment to help you understand your benefits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="py-20 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Get in Touch</h2>
+          <p class="mt-4 text-lg text-slate-500">Ready to take the first step? Contact us to book a consultation or learn more about our services.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <!-- Contact Form -->
+          <div>
+            <form id="contact-form" class="space-y-5" onsubmit="return false;">
+              <div>
+                <label for="contact-name" class="block text-sm font-medium text-slate-700 mb-1.5">Full Name</label>
+                <input type="text" id="contact-name" name="name" required class="w-full px-4 py-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="Your full name">
+              </div>
+              <div>
+                <label for="contact-email" class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+                <input type="email" id="contact-email" name="email" required class="w-full px-4 py-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="you@example.com">
+              </div>
+              <div>
+                <label for="contact-phone" class="block text-sm font-medium text-slate-700 mb-1.5">Phone</label>
+                <input type="tel" id="contact-phone" name="phone" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors" placeholder="(604) 000-0000">
+              </div>
+              <div>
+                <label for="contact-goal" class="block text-sm font-medium text-slate-700 mb-1.5">Primary Goal</label>
+                <select id="contact-goal" name="goal" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors text-slate-600">
+                  <option value="">Select your primary goal...</option>
+                  <option value="adhd">ADHD & Attention Improvement</option>
+                  <option value="anxiety">Anxiety & Stress Relief</option>
+                  <option value="depression">Depression Management</option>
+                  <option value="ptsd">PTSD & Trauma Recovery</option>
+                  <option value="brain-injury">Brain Injury Rehabilitation</option>
+                  <option value="peak-performance">Peak Performance</option>
+                  <option value="sleep">Sleep Improvement</option>
+                  <option value="pain">Pain & Migraine Relief</option>
+                  <option value="learning">Learning Disabilities Support</option>
+                  <option value="other">Other / General Inquiry</option>
+                </select>
+              </div>
+              <div>
+                <label for="contact-message" class="block text-sm font-medium text-slate-700 mb-1.5">Message</label>
+                <textarea id="contact-message" name="message" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-none" placeholder="Tell us about your situation or any questions you have..."></textarea>
+              </div>
+              <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors shadow-sm text-base">
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="space-y-8">
+            <!-- Address -->
+            <div class="flex gap-4">
+              <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-800 mb-1">Address</h3>
+                <p class="text-slate-600 text-sm">2-8088 Spires Gate<br>Richmond, BC, V6Y 4J6</p>
+              </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="flex gap-4">
+              <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-800 mb-1">Phone</h3>
+                <a href="tel:6047309600" class="text-primary hover:text-primary-dark text-sm font-medium transition-colors">(604) 730-9600</a>
+              </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="flex gap-4">
+              <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
+                <svg class="w-5 h-5 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-800 mb-1">Hours</h3>
+                <p class="text-slate-600 text-sm">Monday - Saturday<br>10:00 AM - 9:00 PM</p>
+              </div>
+            </div>
+
+            <!-- Map Placeholder -->
+            <div class="bg-slate-100 rounded-xl border border-slate-200 overflow-hidden mt-6">
+              <div class="p-8 flex flex-col items-center justify-center text-center min-h-[200px]">
+                <svg class="w-10 h-10 text-slate-400 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
+                <p class="text-slate-500 text-sm font-medium">2-8088 Spires Gate, Richmond, BC</p>
+                <p class="text-slate-400 text-xs mt-1">Near Richmond Centre, easily accessible by transit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-[#064e5c] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-cyan-200/80 hover:text-white text-sm transition-colors">About Neurofeedback</a></li>
+            <li><a href="#conditions" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Conditions We Treat</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Our Services</a></li>
+            <li><a href="#team" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Our Team</a></li>
+            <li><a href="#testimonials" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Patient Stories</a></li>
+            <li><a href="#faq" class="text-cyan-200/80 hover:text-white text-sm transition-colors">FAQ</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-6">Services</h3>
+          <ul class="space-y-3">
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">EEG Neurofeedback</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Brain Gym</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Massage & Reflexology</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Acupuncture</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Counselling & CBT</a></li>
+            <li><a href="#services" class="text-cyan-200/80 hover:text-white text-sm transition-colors">Hypnotherapy</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div>
+          <h3 class="text-lg font-semibold mb-6">Contact</h3>
+          <ul class="space-y-3">
+            <li class="text-cyan-200/80 text-sm">2-8088 Spires Gate<br>Richmond, BC, V6Y 4J6</li>
+            <li><a href="tel:6047309600" class="text-cyan-200/80 hover:text-white text-sm transition-colors">(604) 730-9600</a></li>
+            <li class="text-cyan-200/80 text-sm">Mon-Sat, 10:00 AM - 9:00 PM</li>
+          </ul>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="text-cyan-200/80 hover:text-white text-sm transition-colors" aria-label="Facebook">Facebook</a>
+            <a href="#" class="text-cyan-200/80 hover:text-white text-sm transition-colors" aria-label="LinkedIn">LinkedIn</a>
+            <a href="#" class="text-cyan-200/80 hover:text-white text-sm transition-colors" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <p class="text-cyan-200/60 text-sm">&copy; 2026 Vancouver Neurotherapy Health Services Inc. All rights reserved.</p>
+          <p class="text-cyan-200/60 text-xs">Serving Vancouver, Richmond, Burnaby, Surrey & the Lower Mainland</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // === Mobile Menu ===
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const mobilePanel = document.getElementById('mobile-panel');
+    const menuIconOpen = document.getElementById('menu-icon-open');
+    const menuIconClose = document.getElementById('menu-icon-close');
+    let menuOpen = false;
+
+    function toggleMobileMenu() {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileDrawer.classList.remove('pointer-events-none');
+        mobileOverlay.classList.remove('opacity-0');
+        mobileOverlay.classList.add('opacity-100');
+        mobilePanel.classList.remove('translate-x-full');
+        mobilePanel.classList.add('translate-x-0');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      } else {
+        mobileDrawer.classList.add('pointer-events-none');
+        mobileOverlay.classList.add('opacity-0');
+        mobileOverlay.classList.remove('opacity-100');
+        mobilePanel.classList.add('translate-x-full');
+        mobilePanel.classList.remove('translate-x-0');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when nav link clicked
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (menuOpen) toggleMobileMenu();
+      });
+    });
+
+    // === Scroll-triggered Nav Shadow ===
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        header.classList.add('shadow-md');
+      } else {
+        header.classList.remove('shadow-md');
+      }
+    });
+
+    // === Services Accordion ===
+    document.querySelectorAll('.service-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const chevron = btn.querySelector('.service-chevron');
+        const isOpen = !content.classList.contains('hidden');
+
+        if (isOpen) {
+          content.classList.add('hidden');
+          chevron.style.transform = 'rotate(0deg)';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          content.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // === FAQ Accordion (only one open at a time) ===
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('.faq-item');
+        const content = btn.nextElementSibling;
+        const chevron = btn.querySelector('.faq-chevron');
+        const isOpen = !content.classList.contains('hidden');
+
+        // Close all FAQs
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.querySelector('.faq-content').classList.add('hidden');
+          item.querySelector('.faq-chevron').style.transform = 'rotate(0deg)';
+          item.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked one if it was closed
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          chevron.style.transform = 'rotate(180deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // === Testimonial Carousel ===
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dotsContainer = document.getElementById('testimonial-dots');
+    const prevBtn = document.getElementById('testimonial-prev');
+    const nextBtn = document.getElementById('testimonial-next');
+    let currentSlide = 0;
+    let autoAdvance;
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'w-2.5 h-2.5 rounded-full transition-colors duration-200';
+      dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('opacity-100');
+      slides[currentSlide].classList.add('opacity-0');
+      slides[currentSlide].style.pointerEvents = 'none';
+
+      currentSlide = index;
+
+      slides[currentSlide].classList.remove('opacity-0');
+      slides[currentSlide].classList.add('opacity-100');
+      slides[currentSlide].style.pointerEvents = 'auto';
+
+      // Update dots
+      dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+        if (i === currentSlide) {
+          dot.classList.add('bg-primary');
+          dot.classList.remove('bg-slate-300');
+        } else {
+          dot.classList.remove('bg-primary');
+          dot.classList.add('bg-slate-300');
+        }
+      });
+
+      resetAutoAdvance();
+    }
+
+    function nextSlide() {
+      goToSlide((currentSlide + 1) % slides.length);
+    }
+
+    function prevSlide() {
+      goToSlide((currentSlide - 1 + slides.length) % slides.length);
+    }
+
+    function resetAutoAdvance() {
+      clearInterval(autoAdvance);
+      autoAdvance = setInterval(nextSlide, 6000);
+    }
+
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Initialize first slide
+    goToSlide(0);
+
+    // === Contact Form ===
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Message Sent!';
+      btn.classList.remove('bg-accent', 'hover:bg-accent-hover');
+      btn.classList.add('bg-green-600');
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.add('bg-accent', 'hover:bg-accent-hover');
+        btn.classList.remove('bg-green-600');
+        this.reset();
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
