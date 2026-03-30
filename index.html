@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VNHS | Vancouver Neurotherapy Health Services — Neurofeedback Clinic</title>
+  <meta name="description" content="Vancouver Neurotherapy Health Services (VNHS) — Drug-free neurofeedback therapy for ADHD, anxiety, depression, brain injuries, and more. 90-95% success rate. Serving Richmond, Vancouver & the Lower Mainland since 1996.">
+  <meta property="og:title" content="VNHS | Vancouver Neurotherapy Health Services">
+  <meta property="og:description" content="Drug-free neurofeedback therapy for ADHD, anxiety, depression, brain injuries. 90-95% success rate. Serving Vancouver & Richmond since 1996.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://realqhimself.github.io/neurofeedback-clinic-redesign/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230891b2'/><text x='50' y='68' font-size='55' text-anchor='middle' fill='white' font-family='system-ui' font-weight='bold'>V</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -24,6 +30,13 @@
     body { font-family: 'Inter', system-ui, sans-serif; }
     .hero-gradient {
       background: linear-gradient(135deg, #064e5c 0%, #0891b2 40%, #06b6d4 70%, #67e8f9 100%);
+      background-size: 200% 200%;
+      animation: gradient-shift 8s ease infinite;
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .hero-wave {
       position: absolute;
@@ -38,10 +51,27 @@
       width: calc(100% + 1.3px);
       height: 80px;
     }
-    .condition-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    .condition-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .condition-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px -12px rgba(8, 145, 178, 0.15);
+      border-color: #0891b2;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
     .timeline-line {
       position: absolute;
       left: 20px;
@@ -208,16 +238,16 @@
     </section>
 
     <!-- ========== CONDITIONS WE TREAT ========== -->
-    <section id="conditions" class="py-20 lg:py-28 bg-white">
+    <section id="conditions" class="py-20 lg:py-28 bg-white scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Conditions We Treat</h2>
           <p class="mt-4 text-lg text-slate-500">Evidence-based neurofeedback therapy for a wide range of neurological and psychological conditions</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- ADHD -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-1">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
             </div>
@@ -225,7 +255,7 @@
             <p class="text-sm text-slate-500">Improve focus, reduce impulsivity, and enhance executive function.</p>
           </div>
           <!-- Anxiety -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-2">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
             </div>
@@ -233,7 +263,7 @@
             <p class="text-sm text-slate-500">Calm an overactive nervous system and restore emotional balance.</p>
           </div>
           <!-- Depression -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-3">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
             </div>
@@ -241,7 +271,7 @@
             <p class="text-sm text-slate-500">Rebalance mood-regulating brainwave patterns naturally.</p>
           </div>
           <!-- PTSD -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-4">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
             </div>
@@ -249,7 +279,7 @@
             <p class="text-sm text-slate-500">Help the brain process trauma and reduce hyperarousal responses.</p>
           </div>
           <!-- Brain Injuries -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-1">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
             </div>
@@ -257,7 +287,7 @@
             <p class="text-sm text-slate-500">Support recovery from concussions, TBI, and stroke-related damage.</p>
           </div>
           <!-- Autism -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-2">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
             </div>
@@ -265,7 +295,7 @@
             <p class="text-sm text-slate-500">Enhance social engagement, reduce sensory overload, and improve communication.</p>
           </div>
           <!-- Chronic Pain -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-3">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
             </div>
@@ -273,7 +303,7 @@
             <p class="text-sm text-slate-500">Retrain pain pathways and reduce migraine frequency and severity.</p>
           </div>
           <!-- Learning Disabilities -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-4">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
             </div>
@@ -281,7 +311,7 @@
             <p class="text-sm text-slate-500">Address dyslexia, processing difficulties, and academic challenges.</p>
           </div>
           <!-- Epilepsy -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-1">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17l-5.1-5.1m0 0L11.42 4.97m-5.1 5.1H21M3 12a9 9 0 1018 0 9 9 0 00-18 0z"/></svg>
             </div>
@@ -289,7 +319,7 @@
             <p class="text-sm text-slate-500">Reduce seizure frequency through targeted brainwave training.</p>
           </div>
           <!-- Peak Performance -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-2">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 18.75h-9m9 0a3 3 0 013 3h-15a3 3 0 013-3m9 0v-3.375c0-.621-.503-1.125-1.125-1.125h-.871M7.5 18.75v-3.375c0-.621.504-1.125 1.125-1.125h.872m5.007 0H9.497m5.007 0a7.454 7.454 0 01-.982-3.172M9.497 14.25a7.454 7.454 0 00.981-3.172M5.25 4.236c-.982.143-1.954.317-2.916.52A6.003 6.003 0 007.73 9.728M5.25 4.236V4.5c0 2.108.966 3.99 2.48 5.228M5.25 4.236V2.721C7.456 2.41 9.71 2.25 12 2.25c2.291 0 4.545.16 6.75.47v1.516M18.75 4.236c.982.143 1.954.317 2.916.52A6.003 6.003 0 0016.27 9.728M18.75 4.236V4.5c0 2.108-.966 3.99-2.48 5.228m0 0a6.023 6.023 0 01-2.77.672 6.023 6.023 0 01-2.77-.672"/></svg>
             </div>
@@ -297,7 +327,7 @@
             <p class="text-sm text-slate-500">Optimize focus, creativity, and mental clarity for athletes and professionals.</p>
           </div>
           <!-- Sleep -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-3">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
             </div>
@@ -305,7 +335,7 @@
             <p class="text-sm text-slate-500">Regulate sleep patterns and improve overall sleep quality.</p>
           </div>
           <!-- Addiction -->
-          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 transition-all duration-300 cursor-default">
+          <div class="condition-card bg-white border border-slate-200 rounded-xl p-6 cursor-default reveal reveal-delay-4">
             <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center mb-4">
               <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>
             </div>
@@ -317,11 +347,11 @@
     </section>
 
     <!-- ========== ABOUT / HOW IT WORKS ========== -->
-    <section id="about" class="py-20 lg:py-28 bg-slate-50">
+    <section id="about" class="py-20 lg:py-28 bg-slate-50 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <!-- Left: Text -->
-          <div>
+          <div class="reveal">
             <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-6">What is Neurofeedback?</h2>
             <p class="text-lg text-slate-600 leading-relaxed mb-8">
               Neurofeedback is a form of biofeedback that uses real-time monitoring of brain activity to teach self-regulation. Using EEG sensors placed on the scalp, we measure your brainwave patterns and provide feedback through visual and auditory cues, helping your brain learn to function more efficiently.
@@ -333,7 +363,7 @@
           </div>
 
           <!-- Right: Process Timeline -->
-          <div class="relative pl-14">
+          <div class="relative pl-14 reveal reveal-delay-2">
             <div class="timeline-line"></div>
             <!-- Step 1 -->
             <div class="relative mb-12">
@@ -373,16 +403,16 @@
     </section>
 
     <!-- ========== SERVICES ========== -->
-    <section id="services" class="py-20 lg:py-28 bg-white">
+    <section id="services" class="py-20 lg:py-28 bg-white scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Our Services</h2>
           <p class="mt-4 text-lg text-slate-500">A comprehensive range of therapies to support your brain health and overall well-being</p>
         </div>
 
         <div class="max-w-3xl mx-auto space-y-3">
           <!-- Service 1 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-1">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -400,7 +430,7 @@
           </div>
 
           <!-- Service 2 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-2">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -418,7 +448,7 @@
           </div>
 
           <!-- Service 3 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-3">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -436,7 +466,7 @@
           </div>
 
           <!-- Service 4 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-4">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -454,7 +484,7 @@
           </div>
 
           <!-- Service 5 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-1">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -472,7 +502,7 @@
           </div>
 
           <!-- Service 6 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-2">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -490,7 +520,7 @@
           </div>
 
           <!-- Service 7 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-3">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -508,7 +538,7 @@
           </div>
 
           <!-- Service 8 -->
-          <div class="service-item border border-slate-200 rounded-xl overflow-hidden">
+          <div class="service-item border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-4">
             <button class="service-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <div class="flex items-center gap-4">
                 <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -528,17 +558,53 @@
       </div>
     </section>
 
-    <!-- ========== TEAM ========== -->
-    <section id="team" class="py-20 lg:py-28 bg-slate-50">
+    <!-- ========== FIRST VISIT ========== -->
+    <section class="py-20 lg:py-28 bg-gradient-to-br from-slate-50 to-cyan-50/30 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">What to Expect on Your First Visit</h2>
+          <p class="mt-4 text-lg text-slate-500">Your journey to better brain health starts with a comfortable, thorough assessment</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div class="text-center reveal reveal-delay-1">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">Consultation</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">We start with a friendly conversation about your history, symptoms, and goals. No pressure — just understanding your unique situation.</p>
+          </div>
+
+          <div class="text-center reveal reveal-delay-2">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">Brain Assessment</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">We place comfortable EEG sensors on your scalp to measure baseline brainwave patterns. It's painless, non-invasive, and takes about 30 minutes.</p>
+          </div>
+
+          <div class="text-center reveal reveal-delay-3">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-sm border border-slate-100 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
+            </div>
+            <h3 class="text-lg font-semibold text-slate-800 mb-2">Personal Plan</h3>
+            <p class="text-slate-500 text-sm leading-relaxed">We create a tailored training plan based on your assessment results, then schedule your first training session. Most clients see their first improvements within weeks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section id="team" class="py-20 lg:py-28 bg-slate-50 scroll-mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Our Team</h2>
           <p class="mt-4 text-lg text-slate-500">Experienced practitioners dedicated to your brain health and well-being</p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <!-- Teresa -->
-          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal reveal-delay-1">
             <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-white">TB</span>
             </div>
@@ -548,7 +614,7 @@
           </div>
 
           <!-- Sarah -->
-          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal reveal-delay-2">
             <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-white">SM</span>
             </div>
@@ -558,7 +624,7 @@
           </div>
 
           <!-- Aldus -->
-          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal reveal-delay-3">
             <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-white">AC</span>
             </div>
@@ -568,7 +634,7 @@
           </div>
 
           <!-- Tanja -->
-          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100">
+          <div class="bg-white rounded-xl p-6 text-center shadow-sm border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 reveal reveal-delay-4">
             <div class="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-cyan-400 flex items-center justify-center mx-auto mb-4">
               <span class="text-2xl font-bold text-white">TD</span>
             </div>
@@ -581,14 +647,14 @@
     </section>
 
     <!-- ========== TESTIMONIALS ========== -->
-    <section id="testimonials" class="py-20 lg:py-28 bg-white">
+    <section id="testimonials" class="py-20 lg:py-28 bg-white scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Patient Stories</h2>
           <p class="mt-4 text-lg text-slate-500">Real experiences from our clients and their families</p>
         </div>
 
-        <div class="relative max-w-4xl mx-auto">
+        <div class="relative max-w-4xl mx-auto reveal">
           <!-- Testimonial Container -->
           <div id="testimonial-container" class="relative overflow-hidden min-h-[280px] sm:min-h-[240px]">
             <!-- Slide 1 -->
@@ -711,16 +777,16 @@
     </section>
 
     <!-- ========== FAQ ========== -->
-    <section id="faq" class="py-20 lg:py-28 bg-slate-50">
+    <section id="faq" class="py-20 lg:py-28 bg-slate-50 scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Frequently Asked Questions</h2>
           <p class="mt-4 text-lg text-slate-500">Answers to common questions about neurofeedback therapy</p>
         </div>
 
         <div class="max-w-3xl mx-auto space-y-3">
           <!-- FAQ 1 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-1">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">What is the history of EEG Biofeedback?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -731,7 +797,7 @@
           </div>
 
           <!-- FAQ 2 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-2">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">Could results be due to a placebo effect?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -742,7 +808,7 @@
           </div>
 
           <!-- FAQ 3 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-3">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">What is the minimum age for treatment?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -753,7 +819,7 @@
           </div>
 
           <!-- FAQ 4 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-4">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">How long does training take?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -764,7 +830,7 @@
           </div>
 
           <!-- FAQ 5 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-1">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">What's the difference between neurofeedback and biofeedback?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -775,7 +841,7 @@
           </div>
 
           <!-- FAQ 6 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-2">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">Can I reduce my medications?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -786,7 +852,7 @@
           </div>
 
           <!-- FAQ 7 -->
-          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden">
+          <div class="faq-item bg-white border border-slate-200 rounded-xl overflow-hidden reveal reveal-delay-3">
             <button class="faq-toggle w-full flex items-center justify-between p-5 sm:p-6 text-left hover:bg-slate-50 transition-colors" aria-expanded="false">
               <span class="font-semibold text-slate-800 pr-4">Is this covered by insurance?</span>
               <svg class="faq-chevron w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
@@ -800,16 +866,16 @@
     </section>
 
     <!-- ========== CONTACT ========== -->
-    <section id="contact" class="py-20 lg:py-28 bg-white">
+    <section id="contact" class="py-20 lg:py-28 bg-white scroll-mt-20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
           <h2 class="text-3xl sm:text-4xl font-bold text-slate-800">Get in Touch</h2>
           <p class="mt-4 text-lg text-slate-500">Ready to take the first step? Contact us to book a consultation or learn more about our services.</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           <!-- Contact Form -->
-          <div>
+          <div class="reveal reveal-delay-1">
             <form id="contact-form" class="space-y-5" onsubmit="return false;">
               <div>
                 <label for="contact-name" class="block text-sm font-medium text-slate-700 mb-1.5">Full Name</label>
@@ -846,11 +912,12 @@
               <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-accent hover:bg-accent-hover text-white font-semibold rounded-lg transition-colors shadow-sm text-base">
                 Send Message
               </button>
+              <p class="text-xs text-slate-400 mt-3">This is a preview site. Form submissions are not yet connected.</p>
             </form>
           </div>
 
           <!-- Contact Info -->
-          <div class="space-y-8">
+          <div class="space-y-8 reveal reveal-delay-2">
             <!-- Address -->
             <div class="flex gap-4">
               <div class="w-11 h-11 rounded-lg bg-cyan-50 flex items-center justify-center shrink-0">
@@ -884,13 +951,19 @@
               </div>
             </div>
 
-            <!-- Map Placeholder -->
-            <div class="bg-slate-100 rounded-xl border border-slate-200 overflow-hidden mt-6">
-              <div class="p-8 flex flex-col items-center justify-center text-center min-h-[200px]">
-                <svg class="w-10 h-10 text-slate-400 mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
-                <p class="text-slate-500 text-sm font-medium">2-8088 Spires Gate, Richmond, BC</p>
-                <p class="text-slate-400 text-xs mt-1">Near Richmond Centre, easily accessible by transit</p>
-              </div>
+            <!-- Map -->
+            <div class="rounded-xl border border-slate-200 overflow-hidden mt-6">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2607.8!2d-123.1368!3d49.1668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s8088+Spires+Gate+Richmond+BC!5e0!3m2!1sen!2sca!4v1"
+                width="100%"
+                height="250"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="rounded-xl"
+                title="VNHS Location - Richmond, BC">
+              </iframe>
             </div>
           </div>
         </div>
@@ -955,6 +1028,10 @@
       </div>
     </div>
   </footer>
+
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-primary text-white shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary-dark z-40 flex items-center justify-center" aria-label="Back to top">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
 
   <!-- ========== JAVASCRIPT ========== -->
   <script>
@@ -1130,6 +1207,53 @@
         btn.classList.remove('bg-green-600');
         this.reset();
       }, 3000);
+    });
+
+    // === Scroll Reveal ===
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // === Active Nav Tracking ===
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('text-primary', 'font-semibold');
+            link.classList.add('text-slate-600');
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.classList.add('text-primary', 'font-semibold');
+              link.classList.remove('text-slate-600');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+    sections.forEach(section => navObserver.observe(section));
+
+    // === Back to Top ===
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backToTop.classList.remove('opacity-0', 'pointer-events-none');
+        backToTop.classList.add('opacity-100', 'pointer-events-auto');
+      } else {
+        backToTop.classList.add('opacity-0', 'pointer-events-none');
+        backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
